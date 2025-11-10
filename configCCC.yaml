@@ -1,0 +1,21 @@
+proxies:
+  - name: "SS-Server"               # 确保代理名称一致
+    type: ss
+    server: "43.165.127.207"          # 服务器 IP 地址
+    port: 8388
+    cipher: chacha20-ietf-poly1305   # 加密方式
+    password: "cwseFZOVCElW"         # 密码
+    udp: true
+
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - "SS-Server"                 # 确保引用的代理名称与 proxies 中一致
+
+rules:
+  - DOMAIN-SUFFIX,google.com,PROXY
+  - DOMAIN-SUFFIX,youtube.com,PROXY
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
