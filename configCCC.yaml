@@ -1,5 +1,5 @@
 proxies:
-  - name: "SS-SR-Server"
+  - name: "SS-US-Server"
     type: ss
     server: '43.131.243.142'    
     port: 8388              
@@ -11,7 +11,7 @@ proxy-groups:
   - name: "PROXY"
     type: select
     proxies:
-      - "SS-SR-Server"        
+      - "SS-US-Server"        
 
 rules:
   - DOMAIN-SUFFIX,google.com,PROXY    
