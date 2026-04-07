@@ -11,7 +11,7 @@ proxy-groups:
   - name: "PROXY"
     type: select
     proxies:
-      - "SS-UR-Server"        
+      - "SS-SR-Server"        
 
 rules:
   - DOMAIN-SUFFIX,google.com,PROXY    
