@@ -1,20 +1,49 @@
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+ipv6: false
+
 proxies:
   - name: "SS-US-Server"
     type: ss
-    server: '43.131.243.142'    
-    port: 8388              
-    cipher: chacha20-ietf-poly1305  
-    password: "oRlhsMk5nlKi"   
-    udp: true                  
+    server: 43.131.243.142
+    port: 8388
+    cipher: chacha20-ietf-poly1305
+    password: "oRlhsMk5nlKi"
+    udp: true
 
 proxy-groups:
   - name: "PROXY"
     type: select
     proxies:
-      - "SS-US-Server"        
+      - "SS-US-Server"
 
 rules:
-  - DOMAIN-SUFFIX,google.com,PROXY    
-  - DOMAIN-SUFFIX,youtube.com,PROXY  
-  - GEOIP,CN,DIRECT                  
-  - MATCH,PROXY        
+  - DOMAIN-SUFFIX,youtube.com,PROXY
+  - DOMAIN-SUFFIX,googlevideo.com,PROXY
+  - DOMAIN-SUFFIX,ytimg.com,PROXY
+  - DOMAIN-SUFFIX,ggpht.com,PROXY
+  - DOMAIN-SUFFIX,google.com,PROXY
+  - DOMAIN-SUFFIX,gstatic.com,PROXY
+  - DOMAIN-SUFFIX,googleapis.com,PROXY
+  - DOMAIN-SUFFIX,googleusercontent.com,PROXY
+  - DOMAIN-KEYWORD,google,PROXY
+  - DOMAIN-KEYWORD,youtube,PROXY
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
+
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 1.1.1.1
+    - 8.8.8.8
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
