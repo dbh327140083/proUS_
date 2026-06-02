@@ -7,7 +7,7 @@ ipv6: false
 proxies:
   - name: "SS-US-Server"
     type: ss
-    server: 43.131.243.142
+    server: 43.155.179.62
     port: 8388
     cipher: chacha20-ietf-poly1305
     password: "oRlhsMk5nlKi"
